@@ -11,6 +11,6 @@ public class PersonController {
     @GetMapping
     public String teste(){
 
-        return "Teste API";
+        return "Thayara Teste";
     }
 }
