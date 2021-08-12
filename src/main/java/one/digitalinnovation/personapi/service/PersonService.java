@@ -9,6 +9,9 @@ import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonService {
 
@@ -26,5 +29,14 @@ public class PersonService {
                 .builder()
                 .message("Pessoa criada com o ID: " + savedPerson.getId())
                 .build();
+    }
+
+    public List<PersonDto> listAll() {
+
+        List<Person> list =  repository.findAll();
+
+        return list.stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
     }
 }
